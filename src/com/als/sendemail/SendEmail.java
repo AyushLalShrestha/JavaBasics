@@ -1,4 +1,4 @@
-package com.als.simpleemail;
+package com.als.sendemail;
 // File Name SendEmail.java
 
 import java.util.*;
