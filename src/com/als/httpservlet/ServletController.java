@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author als
  */
-public class DefaultController extends HttpServlet {
+public class ServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

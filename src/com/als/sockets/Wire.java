@@ -1,47 +1,25 @@
 package com.als.sockets;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Wire {
-    /**
-     *
-     */
+
     protected static final long DEFAULT_QUEUE_SIZE = 10000;
 
-    /**
-     *
-     */
     protected static final Logger logger = Logger.getLogger(Wire.class);
 
-    /**
-     *
-     */
     protected final Socket socket;
 
-    /**
-     *
-     */
-//    protected final String socketInfo;
-
-    /**
-     *
-     */
     protected Context context;
 
-    /**
-     *
-     */
     protected boolean newContext = false;
 
-    /**
-     *
-     */
     public static Wire createReceiverWire(String socketInfo, Context context, String identifier) {
         return new Wire(socketInfo, context, identifier);
     }
@@ -205,7 +183,7 @@ public class Wire {
     }
 
 
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         Context context = ZMQ.context(0);
         Wire requester = new Wire("XREQ:connect:ipc:///tmp/repo1.sock", context);
         Wire replier = new Wire("XREP:bind:ipc:///tmp/repo1.sock", context);

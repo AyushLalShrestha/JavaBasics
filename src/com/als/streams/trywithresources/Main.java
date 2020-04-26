@@ -3,10 +3,11 @@ package com.als.streams.trywithresources;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import com.als.streams.trywithresources.MyAutoClosable;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         // doTryCatchFinally();
         // doTryWithResources();
         // doTryWithResourcesMulti();
@@ -65,7 +66,7 @@ public class Main {
     }
 
     private static void doCloseThing() {
-        try (MyAutoCloseable ac = new MyAutoCloseable()) {
+        try (MyAutoClosable ac = new MyAutoClosable()) {
             ac.saySomething();
         } catch (IOException e) {
             System.out.println(e.getClass().getSimpleName() + " - " + e.getMessage());

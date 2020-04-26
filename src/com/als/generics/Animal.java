@@ -18,7 +18,7 @@ public class Animal<T, T2> {
         return name;
     }
 
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         Animal<Integer, Integer> animal1 = new Animal<Integer, Integer>(1, 11);
         Animal<String, String> animal2 = new Animal<String, String>("Ayush", "Man");
 

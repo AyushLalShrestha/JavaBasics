@@ -1,4 +1,4 @@
-package com.als.jdbc;s
+package com.als.jdbc;
 
 import com.als.jdbc.StudentDAO;
 import com.als.jdbc.DBConnection;

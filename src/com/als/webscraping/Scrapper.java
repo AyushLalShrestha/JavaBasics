@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Scrapper {
 
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("This is Instagram user account's photo downloader");
         System.out.println("Please enter the complete user-ID, for eg. ayush_stha : ");
