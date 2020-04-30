@@ -9,7 +9,7 @@ import com.als.concurrency.semaphores.BoundedSemaphore;
  */
 public class LockExample {
 
-    public static void main(String[] args) {
+    public static void dummymain(String[] args) {
 
         BoundedSemaphore boundedSemaphore = new BoundedSemaphore(5);
 

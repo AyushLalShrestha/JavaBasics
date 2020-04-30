@@ -1,6 +1,6 @@
 package com.als.sockets;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
@@ -12,11 +12,12 @@ public class Wire {
 
     protected static final long DEFAULT_QUEUE_SIZE = 10000;
 
-    protected static final Logger logger = Logger.getLogger(Wire.class);
+//    protected static final Logger logger = Logger.getLogger(Wire.class);
 
     protected final Socket socket;
 
     protected Context context;
+    protected String socketInfo;
 
     protected boolean newContext = false;
 
@@ -115,9 +116,6 @@ public class Wire {
             throw new RuntimeException("Unable to send the message: " + message);
         }
 
-        if (benchmarker != null) {
-            benchmarker.stopSend();
-        }
         return true;
     }
 
@@ -188,13 +186,13 @@ public class Wire {
         Wire requester = new Wire("XREQ:connect:ipc:///tmp/repo1.sock", context);
         Wire replier = new Wire("XREP:bind:ipc:///tmp/repo1.sock", context);
 
-        requester.send(StringUtil.toUtf8("hi"));
+        requester.send("hi".getBytes());
         List<byte[]> query = replier.recvMultipart();
-        System.out.println("query: " + StringUtil.fromUtf8(query.get(1)));
+        System.out.println("query: " + query.get(1).toString());
 
         replier.sendMultipart(query.get(0), query.get(1));
         byte[] response = requester.recv();
-        System.out.println("response: " + StringUtil.fromUtf8(response));
+        System.out.println("response: " + response.toString());
 
         Wire pusher = new Wire("PUSH:connect:ipc:///tmp/repo2.sock", context);
         Wire puller = new Wire("PULL:bind:ipc:///tmp/repo2.sock", context);
@@ -202,8 +200,8 @@ public class Wire {
         int i = 0;
         while (i < 100000) {
             i += 1;
-            pusher.send(StringUtil.toUtf8("hi"));
-            System.out.println(StringUtil.fromUtf8(puller.recv()));
+            pusher.send("hi".getBytes());
+            System.out.println(puller.recv().toString());
 
         }
 

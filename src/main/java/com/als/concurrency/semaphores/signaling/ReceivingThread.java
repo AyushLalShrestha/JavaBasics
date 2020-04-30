@@ -12,6 +12,7 @@ public class ReceivingThread extends Thread{
 
     public void run(){
         while(true){
+            // Get signal i.e release & then do something
             this.semaphore.release();
             System.out.println(Thread.currentThread().getName() + " | Receiving:"+this.semaphore.getSignals());
             try {

@@ -12,6 +12,7 @@ public class SendingThread extends Thread {
 
     public void run(){
         while(true){
+            // Do something, then signal i.e take
             System.out.println(Thread.currentThread().getName() +" | Sending:"+this.semaphore.getSignals());
             this.semaphore.take();
             try {

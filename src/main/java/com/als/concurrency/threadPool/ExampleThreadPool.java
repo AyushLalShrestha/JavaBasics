@@ -11,7 +11,7 @@ package com.als.concurrency.threadPool;
  */
 public class ExampleThreadPool {
 
-    public static void main(String[] args) {
+    public static void threadmain(String[] args) {
         //create the Thread pool
         ThreadPool threadPool = new ThreadPool(2, 3);
 
